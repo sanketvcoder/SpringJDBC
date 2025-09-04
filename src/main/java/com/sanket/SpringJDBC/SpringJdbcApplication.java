@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 import com.sanket.SpringJDBC.model.Student;
-
+import com.sanket.SpringJDBC.service.StudentService;
 @SpringBootApplication
 public class SpringJdbcApplication {
 
@@ -17,6 +17,9 @@ public class SpringJdbcApplication {
         s.setName("Sanket");
         s.setMarks(95);
         System.out.println(s);
+
+		StudentService studentService = context.getBean(StudentService.class);
+		studentService.getStudentDetails();
     }
 
 }
