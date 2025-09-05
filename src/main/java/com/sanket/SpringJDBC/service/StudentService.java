@@ -22,4 +22,8 @@ public class StudentService {
     public List<Student> getAllStudent() {
         return studentRepo.findAll();
     }
+
+    public List<Student> searchStudents(String field, Object value) {
+        return studentRepo.search(field, value);
+    }
 }

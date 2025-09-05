@@ -13,8 +13,7 @@ public class SpringJdbcApplication {
         ApplicationContext context = SpringApplication.run(SpringJdbcApplication.class, args);
 
         // Student s = context.getBean(Student.class);
-        // s.setRollNo(101);
-        // s.setName("Sanket");
+        // s.setName("Rohit");
         // s.setMarks(95);
         // System.out.println(s);
         // Student s2 = context.getBean(Student.class);
@@ -29,6 +28,7 @@ public class SpringJdbcApplication {
         // System.out.println(s3);
         StudentService studentService = context.getBean(StudentService.class);
         // studentService.addStudent(s);
+        studentService.searchStudents("name", "sumit").forEach(student -> System.out.println(student));
 
         try {
             studentService.getAllStudent()

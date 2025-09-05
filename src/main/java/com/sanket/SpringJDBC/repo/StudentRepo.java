@@ -51,4 +51,19 @@ public class StudentRepo {
 
         return jdbcTemplate.query(sql, rowMapper);
     }
+
+    public List<Student> search(String field, Object value) {
+        if (!field.equalsIgnoreCase("rollNo") && !field.equalsIgnoreCase("name") && !field.equalsIgnoreCase("marks")) {
+            throw new IllegalArgumentException("Invalid field: " + field);
+        }
+        String sql = "select * from student where " + field + " = ?";
+        RowMapper<Student> rowMapper = (rs, rowNum) -> {
+            Student s = new Student();
+            s.setRollNo(rs.getInt("rollNo"));
+            s.setName(rs.getString("name"));
+            s.setMarks(rs.getInt("marks"));
+            return s;
+        };
+        return jdbcTemplate.query(sql, rowMapper, value);
+    }
 }
